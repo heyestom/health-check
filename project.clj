@@ -1,8 +1,10 @@
 (defproject health-check "0.1.0-SNAPSHOT"
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [org.clojure/clojurescript "1.9.946"]
+                 [cljs-ajax "0.7.3"]
                  [reagent "0.7.0"]
                  [re-frame "0.10.2"]
+                 [day8.re-frame/http-fx "0.1.4"]
                  [secretary "1.2.3"]]
 
   :jvm-opts ["--add-modules" "java.xml.bind"]

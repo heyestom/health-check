@@ -1,6 +1,22 @@
 # health-check
 
-A [re-frame](https://github.com/Day8/re-frame) application designed to ... well, that part is up to you.
+A [re-frame](https://github.com/Day8/re-frame) application for polling health-check endpoints and giving at a glance feedback about the state of the services in all the environments.
+
+## To use:
+
+This needs to be sorted so that there is an actual ready to go built artefact but for now...
+
+run:
+```
+lein clean
+lein cljsbuild once min
+```
+
+Open index.html in a browser, upload all the services you wish to monitor via the settings page, currently only supports CSV format, ranking them in order of severity (1 is most severe so - probably what you want for your prod services), and then switch to the monitoring tab.
+
+Health Check will periodically ping all the urls it has been provided with and will display any which don't respond with a 2** in a big, red, hard to misconstrue box.
+
+The skeleton of this project was generated using [Day8's re-frame-template](https://github.com/Day8/re-frame-template) which is awesome. :)
 
 ## Development Mode
 

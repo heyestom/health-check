@@ -6,7 +6,23 @@
  (fn [db]
    (:name db)))
 
+(defn active-panel [db _]
+  (:active-panel db))
+
 (re-frame/reg-sub
  ::active-panel
- (fn [db _]
-   (:active-panel db)))
+ active-panel)
+
+(defn health-check-results [db _]
+  (:health-check-results db))
+
+(re-frame/reg-sub
+ ::health-check-results
+ health-check-results)
+
+(defn monitored-services [db _]
+   (:monitored-services db))
+
+(re-frame/reg-sub
+ ::monitored-services
+ monitored-services)

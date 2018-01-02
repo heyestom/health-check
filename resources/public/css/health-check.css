@@ -1,0 +1,106 @@
+
+body {
+    color: #ccc;
+    background-color: #333;
+}
+
+.health-map {
+    height: 98%;
+    width: 98%;
+    margin: 1%;
+    margin-top: 0.5%;
+}
+
+.healthy-message {
+    text-align: center;
+    font-size: 30vh;
+}
+
+.health-summaries {
+    width: 100vw;
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+.service-container {
+    padding-bottom: 0em;
+    padding-top: 0em;
+}
+
+.name-container {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    height: 10rem;
+}
+
+.service-name {
+    margin: 0;
+}
+
+.unhealthy-service {
+    height: 95%;
+    color: #f5deb3;
+    background-color: #ee0000;
+    text-align: center;
+    border-radius: 1em;
+    display: -webkit-box;
+
+    display: flex;
+
+    -webkit-box-align: center;
+    -moz-box-align: center;
+
+    -ms-flex-align: center;
+
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    margin: 0.4em;
+}
+
+.monitoring-section {
+    color: #ccc;
+    padding: 1em;
+    margin: 2em;
+    background-color: #eee;
+}
+
+.bulk-add-text-area {
+    width: 100%;
+}
+
+.bulk-add-save {
+    width: 100%;
+    margin: 0.4em  0em;
+}
+
+.monitored-service {
+    with: 100%;
+    display: block;
+    margin: 1em;
+    padding: 0.2em;
+    background-color: #333;
+    color: #BBB;
+}
+
+.monitored-service-info {
+    display: inline-block;
+    margin: 1em;
+}
+
+.delete-button {
+    color: #eee;
+    background-color: #F00;
+}

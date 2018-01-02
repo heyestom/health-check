@@ -1,22 +1,25 @@
 # health-check
 
-A [re-frame](https://github.com/Day8/re-frame) application for polling health-check endpoints and giving at a glance feedback about the state of the services in all the environments.
+A [re-frame](https://github.com/Day8/re-frame) application for polling health-check endpoints and giving at a glance feedback about which services are not healthy across all environments.
 
 ## To use:
 
-This needs to be sorted so that there is an actual ready to go built artefact but for now...
+Download the current release and open in a browser.  Click on the setting tab and add all the services you wish to monitor via the bulk add section, this currently only supports CSV format, be sure to mark the severity of the service becoming unhealthy in each environment, (1 is most severe so - probably what you want for your prod services), and then switch to the monitoring tab.
 
-run:
-```
-lein clean
-lein cljsbuild once min
-```
-
-Open index.html in a browser, upload all the services you wish to monitor via the settings page, currently only supports CSV format, ranking them in order of severity (1 is most severe so - probably what you want for your prod services), and then switch to the monitoring tab.
-
-Health Check will periodically ping all the urls it has been provided with and will display any which don't respond with a 2** in a big, red, hard to misconstrue box.
+Health Check will periodically ping all the URLs it has been provided with and will display any which don't respond with a 2** in a big, red, hard to misconstrue box. The size of the box corresponds to the given severity for the service which is reporting as unhealthy.
 
 The skeleton of this project was generated using [Day8's re-frame-template](https://github.com/Day8/re-frame-template) which is awesome. :)
+
+## "Building" locally:
+
+Requires a local lein installation
+
+From the root directory run:
+```
+bash build/build-release.sh
+```
+
+This will build a file health-check-release.html which you can then open in a browser and you should be set to go.
 
 ## Development Mode
 

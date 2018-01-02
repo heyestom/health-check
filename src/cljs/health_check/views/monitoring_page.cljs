@@ -40,7 +40,7 @@
           (sort-by :severity)
           calc-row-height
           (map (fn [service] ^{:key service} [unhealthy-service service])))]
-    [:h2 "Healthy! :-)"]))
+    [:h2.healthy-message "Healthy! :-)"]))
 
 (defn- health-summaries []
   (let [service-health-states (re-frame/subscribe [::subs/health-check-results])]

@@ -31,38 +31,42 @@
                    [re-frisk "0.5.3"]]
 
     :plugins      [[lein-figwheel "0.5.14"]
-                   [lein-doo "0.1.8"]]}}
+                   [lein-doo "0.1.8"]
+                   [lein-asset-minifier "0.4.4"]]}}
 
-  :cljsbuild
-  {:builds
-   [{:id           "dev"
-     :source-paths ["src/cljs"]
-     :figwheel     {:on-jsload "health-check.core/mount-root"}
-     :compiler     {:main                 health-check.core
-                    :output-to            "resources/public/js/compiled/app.js"
-                    :output-dir           "resources/public/js/compiled/out"
-                    :asset-path           "js/compiled/out"
-                    :source-map-timestamp true
-                    :preloads             [devtools.preload
-                                           day8.re-frame.trace.preload
-                                           re-frisk.preload]
-                    :closure-defines      {"re_frame.trace.trace_enabled_QMARK_" true}
-                    :external-config      {:devtools/config {:features-to-install :all}}
-                    }}
 
-    {:id           "min"
-     :source-paths ["src/cljs"]
-     :compiler     {:main            health-check.core
-                    :output-to       "resources/public/js/compiled/app.js"
-                    :optimizations   :advanced
-                    :closure-defines {goog.DEBUG false}
-                    :pretty-print    false}}
+  :minify-assets [[:css {:source "resources/public/css"
+                         :target "resources/public/css/health-check.min.css"}]]
 
-    {:id           "test"
-     :source-paths ["src/cljs" "test/cljs"]
-     :compiler     {:main          health-check.runner
-                    :output-to     "resources/public/js/compiled/test.js"
-                    :output-dir    "resources/public/js/compiled/test/out"
-                    :optimizations :none}}
-    ]}
+  :cljsbuild {:builds
+              [{:id           "dev"
+                :source-paths ["src/cljs"]
+                :figwheel     {:on-jsload "health-check.core/mount-root"}
+                :compiler     {:main                 health-check.core
+                               :output-to            "resources/public/js/compiled/app.js"
+                               :output-dir           "resources/public/js/compiled/out"
+                               :asset-path           "js/compiled/out"
+                               :source-map-timestamp true
+                               :preloads             [devtools.preload
+                                                      day8.re-frame.trace.preload
+                                                      re-frisk.preload]
+                               :closure-defines      {"re_frame.trace.trace_enabled_QMARK_" true}
+                               :external-config      {:devtools/config {:features-to-install :all}}
+                               }}
+
+               {:id           "min"
+                :source-paths ["src/cljs"]
+                :compiler     {:main            health-check.core
+                               :output-to       "resources/public/js/compiled/app-min.js"
+                               :optimizations   :advanced
+                               :closure-defines {goog.DEBUG false}
+                               :pretty-print    false}}
+
+               {:id           "test"
+                :source-paths ["src/cljs" "test/cljs"]
+                :compiler     {:main          health-check.runner
+                               :output-to     "resources/public/js/compiled/test.js"
+                               :output-dir    "resources/public/js/compiled/test/out"
+                               :optimizations :none}}
+               ]}
   )

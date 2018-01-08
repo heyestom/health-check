@@ -91,4 +91,4 @@
   (let [services-to-monitor (re-frame/subscribe [::subs/monitored-services])]
     (js/setInterval
      #(ping-health-check-endpoints @services-to-monitor)
-     (* 1000 5))))
+     (* 1000 10))))

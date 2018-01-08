@@ -27,13 +27,13 @@
 
 (defn- calc-row-height [unhealthy-services]
   (let [total-rows (Math/ceil
-                    (apply + (map (fn [x] (/ 1 (:severity x)))
+                    (apply + (map (fn [x] (/ 1 (nth powers-of-two (dec (:severity x)))))
                                   unhealthy-services)))
         row-height (/ 100 total-rows)]
     (map #(assoc % :row-height row-height) unhealthy-services)))
 
 (defn- health-map [severice-health-states]
-  (if (> (count severice-health-states) 0)
+  (if (> (count (remove :healthy? severice-health-states)) 0)
     [:div.health-map.pure-g
      (->> (vals severice-health-states)
           (remove :healthy?)

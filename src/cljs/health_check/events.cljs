@@ -22,11 +22,21 @@
  ::set-health-check-status
  update-service-health)
 
+(defn- mark-service-healthy [service response]
+  (re-frame/dispatch
+   [::set-health-check-status
+    (assoc service :healthy? true)]))
+
+(defn- mark-service-unhealthy [service response]
+  (re-frame/dispatch
+   [::set-health-check-status
+    (assoc service :healthy? false)]))
+
 (defn check-service-health [db [_ [url service]]]
   (GET url
        ;; dispactching the callback means they will get the latest version of db which may have changed
-       {:handler #(re-frame/dispatch [::set-health-check-status (assoc service :healthy? true)])
-        :error-handler #(re-frame/dispatch [::set-health-check-status (assoc service :healthy? false)])})
+       {:handler (partial mark-service-healthy service)
+        :error-handler (partial mark-service-unhealthy service)})
   ;; MUST RETURN DB HERE!
   db)
 
